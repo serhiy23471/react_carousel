@@ -33,18 +33,11 @@ class App extends React.Component<{}, State> {
   };
 
   render() {
-    const {
-      images,
-      itemWidth,
-      frameSize,
-      step,
-      animationDuration,
-      infinite,
-    } = this.state;
+    const { images, itemWidth, frameSize, step, animationDuration, infinite } =
+      this.state;
 
     return (
       <div className="App">
-        
         <h1 data-cy="title">Carousel with {images.length} images</h1>
 
         <div className="controls">
