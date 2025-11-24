@@ -8,10 +8,11 @@ interface State {
   frameSize: number;
   step: number;
   animationDuration: number;
+  infinite: boolean;
 }
 
 class App extends React.Component<{}, State> {
-  state = {
+  state: State = {
     images: [
       './img/1.png',
       './img/2.png',
@@ -32,12 +33,18 @@ class App extends React.Component<{}, State> {
   };
 
   render() {
-    const { images, itemWidth, frameSize, step, animationDuration } =
-      this.state;
+    const {
+      images,
+      itemWidth,
+      frameSize,
+      step,
+      animationDuration,
+      infinite,
+    } = this.state;
 
     return (
       <div className="App">
-        {/* eslint-disable-next-line */}
+        
         <h1 data-cy="title">Carousel with {images.length} images</h1>
 
         <div className="controls">
@@ -51,6 +58,7 @@ class App extends React.Component<{}, State> {
               this.setState({ itemWidth: Number(e.target.value) });
             }}
           />
+
           <label htmlFor="frameId">Frame size: </label>
           <input
             id="frameId"
@@ -63,6 +71,7 @@ class App extends React.Component<{}, State> {
               this.setState({ frameSize: Number(e.target.value) });
             }}
           />
+
           <label htmlFor="stepId">Step: </label>
           <input
             id="stepId"
@@ -75,6 +84,7 @@ class App extends React.Component<{}, State> {
               this.setState({ step: Number(e.target.value) });
             }}
           />
+
           <label>
             Animation in second:{' '}
             <input
@@ -91,13 +101,14 @@ class App extends React.Component<{}, State> {
             />
           </label>
         </div>
+
         <Carousel
           images={images}
           itemWidth={itemWidth}
-          frameSize={this.state.frameSize}
-          step={this.state.step}
-          animationDuration={this.state.animationDuration}
-          infinite={this.state.infinite}
+          frameSize={frameSize}
+          step={step}
+          animationDuration={animationDuration}
+          infinite={infinite}
         />
       </div>
     );

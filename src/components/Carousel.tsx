@@ -4,19 +4,19 @@ import './Carousel.scss';
 interface Props {
   images: string[];
   itemWidth?: number;
-  frameSize: number;
-  step: number;
-  animationDuration: number;
-  infinite: boolean;
+  frameSize?: number;
+  step?: number;
+  animationDuration?: number;
+  infinite?: boolean;
 }
 
 const Carousel: React.FC<Props> = ({
   images,
   itemWidth = 130,
-  frameSize,
-  step,
-  animationDuration,
-  infinite,
+  frameSize = 3,
+  step = 1,
+  animationDuration = 1000,
+  infinite = false,
 }) => {
   const [shift, setShift] = useState(0);
 
